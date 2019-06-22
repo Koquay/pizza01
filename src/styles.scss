@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./app/home/home.component.scss";
+
+.view-order {
+    background: #dd2c00 !important;
+    border: outset;
+    font-weight: bold;
+    min-width: 12rem !important;
+  }
+  
+  .view-order:hover {
+    background: #a30000 !important;
+  }
+
+  footer {
+    background: #dd2c00;
+  }
