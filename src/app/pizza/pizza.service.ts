@@ -24,15 +24,24 @@ export class PizzaService {
       {id: 3, name: 'XLARGE  1 TOPPING', selection: 'none', price: 9.99, qty: 1, img: 'XE1TP.png'}, 
 
       {id: 4, name: 'BUFFALO CHICKEN', selection: 'both', price: 12.99, qty: 1, img: 'buffalo-chicken-pizza.png',
-        toppings: ['red-onions', 'buffalo-chicken', 'fine-roasted-peppers']
+        toppings: ['buffalo-chicken', 'red-onions', 'fine-roasted-peppers']
       },        
       
       {id: 5, name: 'CHIPOTLE CHICKEN', selection: 'both', price: 11.99, qty: 1, img: 'Chipotle-Chicken.png',
-        toppings: ['fine-roasted-peppers', 'chipotle-chicken']
+        toppings: ['chipotle-chicken', 'fine-roasted-peppers', ]
       }, 
       {id: 6, name: 'CHICKEN BRUSCHETTA', selection: 'none', price: 14.99, qty: 1, img: 'chickenbruschetta.png',
         toppings: ['chicken', 'fine-roasted-peppers', 'bruschetta', 'roasted-garlic']
-      },       
+      },   
+      {id: 7, name: 'CHIPOTLE STEAK', selection: 'none', price: 15.99, qty: 1, img: 'Chipotle-Steak.png',
+        toppings: ['chipotle-steak', 'red-onions']
+      },    
+      {id: 8, name: 'BACON DOUBLE CHEESEBURGER', selection: 'none', price: 10.99, qty: 1, img: 'bacondblchburg.png',
+        toppings: ['bacon-crumbs', 'ground-beef']
+      },
+      {id: 9, name: 'BIG BACON BONANZA', selection: 'none', price: 10.99, qty: 1, img: 'bigbacon.png',
+        toppings: ['bacon-crumbs', 'bacon-strips']
+      },
     ]
   }
 

@@ -16,8 +16,9 @@ export class OrderService {
   }
 
   public getCustomerOrder() {    
-    let customizedOrderDetails = this.getCustomizedOrderDetails();
+    let customizedOrderDetails = this.getCustomizedOrderDetails();    
     console.log('customizedOrderDetails', customizedOrderDetails)
+    console.log('customizedSelections', this.customizedSelections)
     return forkJoin([of(customizedOrderDetails), of(this.standardSelections)])
   }
 
@@ -26,20 +27,28 @@ export class OrderService {
     
     this.customizedSelections.forEach((selection, index) => {
       console.log(`selectionItem[${index}]`, selection)
-      var description = '';
+      var ingredients = '';
       
       selection.forEach((item, index) => {
+        console.log('item', item)
         if(item.title) {
-          description = description + item.title;
+          ingredients = ingredients + item.title;
 
           if(index < selection.length-1) {
-            description = description + ', '
+            ingredients = ingredients + ', '
           }
         }        
       })
 
-      orderDetails.push({description:description, img:selection[0].mainImg, price:selection[0].price,
-        itemTotal:selection[0].itemTotal, quantity:selection[0].quantity});
+      orderDetails.push(
+        {
+          name: selection[0].name,
+          ingredients:ingredients || selection[0].name, 
+          img:selection[0].mainImg, 
+          price:selection[0].price,
+          itemTotal:selection[0].itemTotal, 
+          quantity:selection[0].quantity
+      });
 
       console.log('orderDetails', orderDetails)      
     });

@@ -26,4 +26,30 @@ export class OrderComponent implements OnInit {
     }) 
   }
 
+  // private increaseQuantity() {
+  //   this.quantity += 1;
+  //   // this.computePrice();
+  // }
+
+  // private decreaseQuantity() {
+  //   if(this.quantity > 1) {
+  //     this.quantity -= 1;
+  //     // this.computePrice();
+  //   }    
+  // }
+
+  // private computePrice() {
+  //   let price = 0;
+  //   for (let selection of this.customerSelections) {
+  //     let selectionPrice = selection.price;
+  //     if(selection.double) {
+  //       selectionPrice *= 2;
+  //     }
+  //     price += selectionPrice;
+  //   }
+
+  //   this.price = price * this.quantity;
+  //   this.customerSelections[0].itemTotal = this.price;
+  // }
+
 }

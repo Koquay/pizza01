@@ -37,7 +37,7 @@ export class CustomizeComponent implements OnInit {
       this.pizza = pizza;
       if(this.pizza == null) {
         this.pizza = {id:0, name: 'base', selection: 'none', price: 7.00, img: 'base.png' };
-      }
+      }      
       this.initCustomerSelections(this.pizza);            
     })
   }
@@ -116,6 +116,9 @@ export class CustomizeComponent implements OnInit {
         location = `${location}s`
       }
 
+      selection.detail = `${selection.title},  ${amount}, ${location}`;
+
+      console.log('selectio location', selection)
       return `${selection.title},  ${amount}, ${location}`
   }
 
