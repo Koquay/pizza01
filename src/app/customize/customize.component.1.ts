@@ -59,11 +59,13 @@ export class CustomizeComponent implements OnInit {
         }
       }
     }
-    this.quantity = 1;    
-    this.computePrice();
+    this.quantity = 1;
+    this.price = this.customerSelections[0].price;
   }
 
-  private addIngredient(template) {
+  private addIngredient() {
+    for (let template of this.customizeTemplate.toppingsTemplate) {
+      console.log('template', template)
       this.removeSelection(template.name);   
       if (template.choice == 'none') {        
         template.double = false;             
@@ -74,6 +76,7 @@ export class CustomizeComponent implements OnInit {
         
         this.customerSelections.push(selection)
       }      
+    }
 
     this.computePrice();
   }
@@ -86,7 +89,7 @@ export class CustomizeComponent implements OnInit {
       }            
     }
 
-    this.addIngredient(template);
+    this.addIngredient();
   }
 
   private removeSelection(name) {

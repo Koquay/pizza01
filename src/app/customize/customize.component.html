@@ -43,10 +43,11 @@
                           <ng-container *ngFor="let radio of template.selections">
                             <input type="radio" class="mr-1" name="{{template.name}}" id="{{radio.selection}}" 
                               [(ngModel)]="template.choice" [value]="radio.selection"
-                              (change)="addIngredient(template.name)">
+                              (change)="addIngredient(template)">
                           </ng-container>
 
-                          <input type="checkbox" class="ml-2" [(ngModel)]="template.double" (change)="doubleIngredient(template)">
+                          <input type="checkbox" class="ml-2" [(ngModel)]="template.double" 
+                            (change)="doubleIngredient(template)">
                         </div>
                       </div>
                     </div>
