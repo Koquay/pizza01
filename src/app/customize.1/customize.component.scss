@@ -67,17 +67,16 @@ body {
 }
 
 #customize-col {
-    h4 {
-        color: $primary;
-    }
     #create-col {
         position: relative;
         // vertical-align: middle;
         min-height: 22rem;
 
         img {
-            position: absolute;    
-        }                
+            position: absolute;
+            // top: 0;
+            // left: 50%;        
+        }        
     }  
     
     #add-column {

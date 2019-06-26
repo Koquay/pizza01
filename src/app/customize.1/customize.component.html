@@ -5,11 +5,7 @@
     <div class="col text-center">
       <h1 class="page-header">CREATE YOUR OWN</h1>
     </div>
-    <div class="col-12 text-center">
-      <button class="btn btn-primary view-order" type="button" [routerLink]="['/order']">
-        <strong>VIEW ORDER</strong>
-      </button>
-    </div>
+    <div class="col-12 text-center"><button class="btn btn-primary view-order" type="button"><strong>VIEW ORDER</strong></button></div>
   </div>
   <section id="customize-pizza-section" class="my-5">
     <div class="row">
@@ -22,6 +18,8 @@
             </div>
             <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
               <div class="card-body">
+                <p class="card-text d-flex justify-content-center">* Calories listed are in addition to the calories displayed
+                  for the basic preparation of the standard food item. (Cals/slice)</p>
                 <section class="mt-2" *ngFor="let template of customizeTemplate.toppingsTemplate">
                   <h6>{{template.title}}</h6>
                   <div class="row">
@@ -41,9 +39,8 @@
                       <div class="row mt-2">
                         <div class="col d-flex justify-content-center">
                           <ng-container *ngFor="let radio of template.selections">
-                            <input type="radio" class="mr-1" name="{{template.name}}" id="{{radio.selection}}" 
-                              [(ngModel)]="template.choice" [value]="radio.selection"
-                              (change)="addIngredient(template.name)">
+                            <input type="radio" class="mr-1" name="{{template.name}}" id="{{radio.selection}}" [(ngModel)]="template.choice" [value]="radio.selection"
+                              (change)="addIngredient()">
                           </ng-container>
 
                           <input type="checkbox" class="ml-2" [(ngModel)]="template.double" (change)="doubleIngredient(template)">
@@ -63,6 +60,8 @@
             </div>
             <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
               <div class="card-body">
+                <p class="card-text">* Calories listed are in addition to the calories displayed for the basic preparation
+                  of the standard food item. (Cals/slice)</p>
                 <div>
                   <ul class="nav nav-tabs">
                     <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Dough</a></li>
@@ -91,6 +90,8 @@
             </div>
             <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
               <div class="card-body">
+                <p class="card-text">* Calories listed are in addition to the calories displayed for the basic preparation
+                  of the standard food item. (Cals/slice)</p>
                 <div>
                   <ul class="nav nav-tabs">
                     <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Dough</a></li>
@@ -115,13 +116,8 @@
         </div>
       </div>
       <div class="col-12 d-lg-flex col-md-6 col-lg-7 order-0 order-md-1 mb-2" id="customize-col">
-        <div class="row mb-2">
-          <div class="col-12 text-center">
-              <h4 class="">{{pizza.name}}</h4>
-          </div>            
-        </div>
         <div class="row">
-          <div class="col-12 d-flex justify-content-center" id="create-col">            
+          <div class="col-12 d-flex justify-content-center" id="create-col">
             <section *ngFor="let selection of customerSelections" class="d-flex justify-content-center">
               <img class="img-fluid" id="base" src="assets/img/{{selection.img}}">
             </section>
@@ -143,11 +139,8 @@
               </span>
               <span class="font-weight-bold f-1pt5">{{price | currency:'USD':'symbol-narrow'}}</span>
               <span class="d-lg-flex align-items-lg-center">
-                <button class="btn btn-primary btn-sm font-weight-bold" type="button"
-                  (click)="addToCustomized()">
-                  ADD
-                </button>
-                <a id="cancel" class="d-block ml-lg-3" (click)="cancelTemplate()" style="/*color: #f9501c;*/">Cancel</a>
+                <button class="btn btn-primary btn-sm font-weight-bold" type="button">ADD</button>
+                <a id="cancel" class="d-block ml-lg-3" href="#" style="/*color: #f9501c;*/">Cancel</a>
               </span>
             </div>
           </div>
@@ -162,8 +155,8 @@
             <div class="row">
               <div class="col-12" id="items">
                 <ol class="pl-4">
-                  <ng-container *ngFor="let selection of customerSelections; index as indx">
-                    <ng-container *ngIf="indx !== 0">
+                  <ng-container *ngFor="let selection of customerSelections">
+                    <ng-container *ngIf="selection.name !== 'base'">
                       <li>
                         {{displaySelection(selection)}}
                       </li>

@@ -7,11 +7,6 @@ const routes: Routes = [
     path: "",
     component: CustomizeComponent,
     data: {breadcrumb: 'Customize'}
-  },
-  {
-    path: ":id",
-    component: CustomizeComponent,
-    data: {breadcrumb: 'Customize'}
   }
 ];
 

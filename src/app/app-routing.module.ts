@@ -13,6 +13,14 @@ const routes: Routes = [
     loadChildren: './customize/customize.module#CustomizeModule'
   },
   {
+    path: 'order',
+    loadChildren: './order/order.module#OrderModule'
+  },
+  {
+    path: 'pizza',
+    loadChildren: './pizza/pizza.module#PizzaModule'
+  },
+  {
     path: '',
     pathMatch: 'prefix',
     redirectTo: 'home'
