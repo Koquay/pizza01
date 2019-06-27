@@ -71,6 +71,7 @@ export class CustomizeComponent implements OnInit {
         let selection = template.selections.find(option => option.selection == template.choice);
         selection.title = template.title;
         selection.double = template.double;
+        // selection.id = Math.random();
         
         this.customerSelections.push(selection)
       }      
@@ -118,7 +119,6 @@ export class CustomizeComponent implements OnInit {
 
       selection.detail = `${selection.title},  ${amount}, ${location}`;
 
-      console.log('selectio location', selection)
       return `${selection.title},  ${amount}, ${location}`
   }
 

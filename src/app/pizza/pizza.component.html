@@ -5,7 +5,11 @@
             <div class="col text-center">
                 <h1 id="title">PIZZAS</h1>
             </div>
-            <div class="col-12 text-center"><button class="btn btn-primary view-order" type="button"><strong>VIEW ORDER</strong></button></div>
+            <div class="col-12 text-center">
+                <button class="btn btn-primary view-order" type="button" [routerLink]="['/order']">
+                    <strong>VIEW ORDER</strong>
+                </button>
+            </div>
         </div>
         <div class="row my-4">
             <div class="col-12 col-md-6 col-lg-4" *ngFor="let pizza of pizzaDb">
@@ -17,16 +21,16 @@
                         <div class="col-12 d-flex d-lg-flex justify-content-center increase-quantity">
                             <div class="d-flex justify-content-between">
                                 <span class="d-lg-flex align-items-lg-center">
-                                    <a class="d-lg-flex align-items-lg-center" href="#">
+                                    <a class="d-lg-flex align-items-lg-center"  (click)="decreaseQuantity(pizza)">
                                         <i class="fa fa-minus-square"></i>
                                     </a>
-                                    <span id="quantity" class="mx-2 font-weight-bold f-1pt5">{{pizza.qty}}</span>
-                                    <a class="d-lg-flex align-items-lg-center" href="#">
+                                    <span id="quantity" class="mx-2 font-weight-bold f-1pt5">{{pizza.quantity}}</span>
+                                    <a class="d-lg-flex align-items-lg-center"  (click)="increaseQuantity(pizza)">
                                         <i class="fa fa-plus-square"></i>
                                     </a>
                                 </span>
                                 <span class="font-weight-bold f-1pt5">
-                                    {{pizza.price | currency:'USD':'symbol-narrow'}}
+                                    {{pizza.price * pizza.quantity | currency:'USD':'symbol-narrow'}}
                                 </span>
                             </div>
                         </div>
@@ -37,34 +41,16 @@
                                     Add Toppings
                                 </button>
                             </div>
-                            <div class="col-12 col-md-6"><button class="btn btn-primary add-to-cart" type="button">Add To
-                                    Cart</button></div>
+                            <div class="col-12 col-md-6">
+                                <button class="btn btn-primary add-to-cart" type="button" (click)="addToOrder(pizza)">
+                                    Add To Order
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card text-center py-4">
-                    <h4>BIG BACON BONANZA</h4><img class="card-img w-100 d-block" src="assets/img/bigbacon.png">
-                    <div class="card-body">
-                        <p><span>Starting From:</span><span class="ml-2 font-weight-bold">$6.99</span></p>
-                        <div class="row">
-                            <div class="col-12 d-flex d-lg-flex justify-content-center increase-quantity">
-                                <div class="d-flex justify-content-between"><span class="d-lg-flex align-items-lg-center"><a
-                                            class="d-lg-flex align-items-lg-center" href="#"><i class="fa fa-minus-square"></i></a><span
-                                            id="quantity" class="mx-2 font-weight-bold f-1pt5">1</span><a class="d-lg-flex align-items-lg-center"
-                                            href="#"><i class="fa fa-plus-square"></i></a></span><span class="font-weight-bold f-1pt5">$12.99</span></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-md-6"><button class="btn btn-primary add-toppings" type="button">Add Toppings</button></div>
-                            <div class="col-12 col-md-6"><button class="btn btn-primary add-to-cart" type="button">Add To
-                                    Cart</button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card text-center py-4">
                     <h4>CHIPOTLE STEAK</h4><img class="card-img w-100 d-block" src="assets/img/canadian.png">

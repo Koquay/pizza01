@@ -28,18 +28,22 @@
                                 <div class="col">
                                     <div class="form-row" *ngFor="let selection of customizedSelections">
                                         <div class="col-2">
-                                          <img class="img-fluid" src="assets/img/{{selection.img}}">
+                                            <img class="img-fluid" src="assets/img/{{selection.img}}">
                                         </div>
                                         <div class="col d-flex justify-content-left align-items-center">
-                                          <span class="d-flex">{{selection.ingredients}}</span>
+                                            <span class="d-flex">{{selection.ingredients}}</span>
                                         </div>
                                         <div class="col-3 d-flex justify-content-center align-items-center quantity">
-                                          <i class="fa fa-minus-square mr-2 add"></i>
-                                          <span>{{selection.quantity}}</span>
-                                          <i class="fa fa-plus-square ml-2 add"></i>
+                                            <a (click)="decreaseQuantity(selection)">
+                                                <i class="fa fa-minus-square mr-2 add"></i>
+                                            </a>
+                                            <span>{{selection.quantity}}</span>
+                                            <a (click)="increaseQuantity(selection)">
+                                                <i class="fa fa-plus-square ml-2 add"></i>
+                                            </a>
                                         </div>
                                         <div class="col-2 d-flex justify-content-end align-items-center price">
-                                          <span>{{selection.itemTotal | currency:'USD':'symbol-narrow'}}</span>
+                                            <span>{{selection.itemTotal | currency:'USD':'symbol-narrow'}}</span>
                                         </div>
                                         <div class="col-12">
                                             <hr>
@@ -50,60 +54,17 @@
                             <div class="form-row">
                                 <div class="col">
                                     <div class="form-row">
-                                        <div class="col-2"><img class="img-fluid" src="assets/img/20W.png"></div>
-                                        <div class="col d-flex justify-content-center align-items-center"><span class="d-flex">20 Wings</span></div>
-                                        <div class="col-3 d-flex justify-content-center align-items-center quantity"><i class="fa fa-minus-square mr-2 add"></i><span>1</span><i class="fa fa-plus-square ml-2 add"></i></div>
-                                        <div class="col-2 d-flex justify-content-end align-items-center"><span>$18.99</span></div>
-                                        <div class="col-12">
-                                            <hr>
+                                        <div class="col d-flex justify-content-end align-items-center mr-4">
+                                            <span class="d-flex">Subtotal</span>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-row">
-                                        <div class="col-2"><img class="img-fluid" src="assets/img/BCS.png"></div>
-                                        <div class="col d-flex justify-content-center align-items-center"><span class="d-flex">Bacon Caesar Salad</span></div>
-                                        <div class="col-3 d-flex justify-content-center align-items-center quantity"><i class="fa fa-minus-square mr-2 add"></i><span>3</span><i class="fa fa-plus-square ml-2 add"></i></div>
-                                        <div class="col-2 d-flex justify-content-end align-items-center"><span>$24.99</span></div>
-                                        <div class="col-12">
-                                            <hr>
+                                        <div class="col-2 d-flex justify-content-end align-items-center font-weight-bold">
+                                            <span>{{totals.subtotal | currency:'USD':'symbol-narrow'}}</span>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-2"><img class="img-fluid" src="assets/img/Garlic_breadt.png"></div>
-                                        <div class="col d-flex justify-content-center align-items-center"><span class="d-flex">Garlic Bread</span></div>
-                                        <div class="col-3 d-flex justify-content-center align-items-center quantity"><i class="fa fa-minus-square mr-2 add"></i><span>2</span><i class="fa fa-plus-square ml-2 add"></i></div>
-                                        <div class="col-2 d-flex justify-content-end align-items-center"><span>$12.99</span></div>
-                                        <div class="col-12">
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-2"><img class="img-fluid" src="assets/img/BOCCI.png"></div>
-                                        <div class="col d-flex justify-content-center align-items-center"><span class="d-flex">Bocci Bits</span></div>
-                                        <div class="col-3 d-flex justify-content-center align-items-center quantity"><i class="fa fa-minus-square mr-2 add"></i><span>1</span><i class="fa fa-plus-square ml-2 add"></i></div>
-                                        <div class="col-2 d-flex justify-content-end align-items-center"><span>$10.99</span></div>
-                                        <div class="col-12">
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-2"><img class="img-fluid" src="assets/img/6CCGB.png"></div>
-                                        <div class="col d-flex justify-content-center align-items-center"><span class="d-flex">Coca-Cola 6 Pack Glass Bottle</span></div>
-                                        <div class="col-3 d-flex justify-content-center align-items-center quantity"><i class="fa fa-minus-square mr-2 add"></i><span>2</span><i class="fa fa-plus-square ml-2 add"></i></div>
-                                        <div class="col-2 d-flex justify-content-end align-items-center"><span>$10.99</span></div>
-                                        <div class="col-12">
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col d-flex justify-content-end align-items-center mr-4"><span class="d-flex">Subtotal</span></div>
-                                        <div class="col-2 d-flex justify-content-end align-items-center font-weight-bold"><span>$89.99</span></div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col d-flex justify-content-end align-items-center mr-4"><span class="d-flex">Deliver Charge</span></div>
+                                        <div class="col d-flex justify-content-end align-items-center mr-4"><span class="d-flex">Deliver
+                                                Charge
+                                            </span></div>
                                         <div class="col-2 d-flex justify-content-end align-items-center font-weight-bold"><span>$10.99</span></div>
                                     </div>
                                     <div class="form-row">
@@ -116,7 +77,8 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col d-flex justify-content-end align-items-center mr-4"><span class="d-flex">Discount</span></div>
-                                        <div class="col-2 d-flex justify-content-end align-items-center font-weight-bold"><span class="font-weight-bold">$10.99</span></div>
+                                        <div class="col-2 d-flex justify-content-end align-items-center font-weight-bold"><span
+                                                class="font-weight-bold">$10.99</span></div>
                                     </div>
                                     <div class="form-row font-weight-bold f-1pt2 mb-4">
                                         <div class="col d-flex justify-content-end align-items-center mr-4"><span class="d-flex">Total</span></div>
@@ -130,10 +92,14 @@
                                 <div class="col delivery p-4">
                                     <div class="form-row">
                                         <div class="col-12">
-                                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1" checked="" name="delivery-method"><label class="form-check-label" for="formCheck-1">Pick Up</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"
+                                                    checked="" name="delivery-method"><label class="form-check-label" for="formCheck-1">Pick
+                                                    Up
+                                                </label></div>
                                         </div>
                                         <div class="col-12 mt-2">
-                                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1" name="delivery-method"><label class="form-check-label" for="formCheck-1">Delivery</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"
+                                                    name="delivery-method"><label class="form-check-label" for="formCheck-1">Delivery</label></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -161,7 +127,9 @@
                                         </div>
                                     </div>
                                     <div class="form-row mt-4">
-                                        <div class="col-12 text-center"><button class="btn btn-primary view-order w-75" type="button">Place Order</button></div>
+                                        <div class="col-12 text-center"><button class="btn btn-primary view-order w-75" type="button">Place
+                                                Order
+                                            </button></div>
                                     </div>
                                 </div>
                             </div>

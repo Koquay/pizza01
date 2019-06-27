@@ -7,11 +7,12 @@ import { OrderService } from './order.service';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  private customizedSelections;
-  private standardSelections;
+  private customizedSelections = [];
+  private totals = { subtotal: 0, deliveryCharge: 0, GstHst: 0, discount: 0, total: 0 };
+
 
   constructor(
-    private orderService:OrderService
+    private orderService: OrderService
   ) { }
 
   ngOnInit() {
@@ -19,37 +20,44 @@ export class OrderComponent implements OnInit {
   }
 
   private getCustomerOrder() {
-    this.orderService.getCustomerOrder().subscribe(selections => {
-      this.customizedSelections = selections[0];
-      this.standardSelections = selections[1];
-      console.log('selections', selections)
-    }) 
+    this.orderService.getCustomerOrder().subscribe(orders => {
+      this.customizedSelections = [...this.customizedSelections, ...orders];
+      this.computeTotals();
+    })
   }
 
-  // private increaseQuantity() {
-  //   this.quantity += 1;
-  //   // this.computePrice();
-  // }
+  private increaseQuantity(selection) {
+    selection.quantity += 1;
+    this.computeTotals();
+    console.log('increase selection', selection.quantity)
+  }
 
-  // private decreaseQuantity() {
-  //   if(this.quantity > 1) {
-  //     this.quantity -= 1;
-  //     // this.computePrice();
-  //   }    
-  // }
+  private decreaseQuantity(selection) {
+    console.log('increase selection', selection)
+    if (selection.quantity > 0) {
+      selection.quantity -= 1;
+      this.computeTotals();
+    }
 
-  // private computePrice() {
-  //   let price = 0;
-  //   for (let selection of this.customerSelections) {
-  //     let selectionPrice = selection.price;
-  //     if(selection.double) {
-  //       selectionPrice *= 2;
-  //     }
-  //     price += selectionPrice;
-  //   }
+    if (selection.quantity == 0) {
+      this.removeSelection(selection);
+    }
+  }
 
-  //   this.price = price * this.quantity;
-  //   this.customerSelections[0].itemTotal = this.price;
-  // }
+  private computeTotals() {
+    this.totals.subtotal = 0;
+
+    for (let selection of this.customizedSelections) {
+      this.totals.subtotal += selection.price * selection.quantity
+    }
+  }
+
+  private removeSelection(selection) {
+    let removeIndex = this.customizedSelections.findIndex(storedSelection => storedSelection.id == selection.id);
+
+    if (removeIndex >= 0) {
+      this.customizedSelections.splice(removeIndex, 1);
+    }
+  }
 
 }

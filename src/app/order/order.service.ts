@@ -15,11 +15,23 @@ export class OrderService {
     console.log('customizedSelections', this.customizedSelections);
   }
 
+  public addRegularOrder(selection) {    
+    selection.detail = selection.name;
+    selection.ingredients = selection.name;
+    selection.itemTotal = selection.price * selection.quantity;
+    this.standardSelections.push(selection)
+    console.log('pizza to add', selection);
+    console.log('standardSelections', this.standardSelections);
+    return of();
+  }
+
   public getCustomerOrder() {    
     let customizedOrderDetails = this.getCustomizedOrderDetails();    
     console.log('customizedOrderDetails', customizedOrderDetails)
     console.log('customizedSelections', this.customizedSelections)
-    return forkJoin([of(customizedOrderDetails), of(this.standardSelections)])
+    let allOrders = [...customizedOrderDetails, ...this.standardSelections];
+    console.log('allOrders', allOrders)
+    return of(allOrders);
   }
 
   private getCustomizedOrderDetails() {
@@ -30,7 +42,6 @@ export class OrderService {
       var ingredients = '';
       
       selection.forEach((item, index) => {
-        console.log('item', item)
         if(item.title) {
           ingredients = ingredients + item.title;
 
@@ -42,6 +53,7 @@ export class OrderService {
 
       orderDetails.push(
         {
+          id: Math.random(),
           name: selection[0].name,
           ingredients:ingredients || selection[0].name, 
           img:selection[0].mainImg, 
