@@ -27,7 +27,10 @@ export class PizzaComponent implements OnInit {
   }
 
   private addToOrder(pizza) {
-    this.orderService.addRegularOrder(pizza).subscribe()
+    console.log('adding to order ', pizza)
+    let pizzaToAdd = JSON.parse(JSON.stringify(pizza));
+    this.orderService.addRegularOrder(pizzaToAdd).subscribe()
+    // this.orderService.addRegularOrder(Object.assign({}, pizza)).subscribe()
   }
 
   private increaseQuantity(pizza) {    

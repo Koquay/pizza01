@@ -63,7 +63,7 @@ export class CustomizeTemplate {
                     {id: 4, name: 'bacon-crumbs', selection: 'right', price: 2.00,  img: 'bacon-crumbs-right.png'}
                 ],
                 double: false
-            },
+            },            
             {
                 title: 'Beacon Strips',
                 img: 'bacon-strips.png',
@@ -76,7 +76,7 @@ export class CustomizeTemplate {
                     {id: 5, name: 'bacon-strips', selection: 'right', price: 2.00,  img: 'bacon-strips-right.png'}
                 ],
                 double: false
-            },            
+            },                     
             {
                 title: 'Bruschetta',
                 img: 'bruschetta.png',
@@ -89,7 +89,7 @@ export class CustomizeTemplate {
                     {id: 6, name: 'bruschetta', selection: 'right', price: 2.00,  img: 'bruschetta-right.png'}
                 ],
                 double: false
-            },
+            },            
             {
                 title: 'Buffalo Chicken',
                 img: 'buffalo-chicken.png',
@@ -102,7 +102,7 @@ export class CustomizeTemplate {
                     {id: 7, name: 'buffalo-chicken', selection: 'right', price: 2.00,  img: 'buffalo-chicken-right.png'}
                 ],
                 double: false
-            },
+            },           
             {
                 title: 'Caramelized Onions',
                 img: 'caramelized-onions.png',
@@ -115,7 +115,7 @@ export class CustomizeTemplate {
                     {id: 8, name: 'caramelized-onions', selection: 'right', price: 2.00,  img: 'caramelized-onions-right.png'}
                 ],
                 double: false
-            },
+            },            
             {
                 title: 'Chicken',
                 img: 'chicken-menu.png',
@@ -128,7 +128,7 @@ export class CustomizeTemplate {
                     {id: 9, name: 'chicken', selection: 'right', price: 2.00,  img: 'chicken-right.png'}
                 ],
                 double: false
-            },
+            },            
             {
                 title: 'Chipotle Chicken',
                 img: 'chipotle-chicken-menu.png',
@@ -141,7 +141,7 @@ export class CustomizeTemplate {
                     {id: 9, name: 'chipotle-chicken', selection: 'right', price: 2.00,  img: 'chipotle-chicken-right.png'}
                 ],
                 double: false
-            },
+            },            
             {
                 title: 'Chipotle Steak',
                 img: 'Chipotle-Steak-menu.png',
@@ -154,7 +154,7 @@ export class CustomizeTemplate {
                     {id: 10, name: 'chipotle-steak', selection: 'right', price: 2.00,  img: 'chipotle-steak-right.png'}
                 ],
                 double: false
-            },
+            },            
             {
                 title: 'Ciantro',
                 img: 'ciantro.png',
@@ -167,7 +167,7 @@ export class CustomizeTemplate {
                     {id: 11, name: 'ciantro', selection: 'right', price: 2.00,  img: 'ciantro-right.png'}
                 ],
                 double: false
-            },
+            },            
             {
                 title: 'Fine Roasted Peppers',
                 img: 'fine-roasted-peppers.png',

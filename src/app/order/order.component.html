@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <div class="form-row" *ngFor="let selection of customizedSelections">
+                                    <div class="form-row" *ngFor="let selection of orders">
                                         <div class="col-2">
                                             <img class="img-fluid" src="assets/img/{{selection.img}}">
                                         </div>
@@ -61,7 +61,7 @@
                                             <span>{{totals.subtotal | currency:'USD':'symbol-narrow'}}</span>
                                         </div>
                                     </div>
-                                    <div class="form-row">
+                                    <!-- <div class="form-row">
                                         <div class="col d-flex justify-content-end align-items-center mr-4"><span class="d-flex">Deliver
                                                 Charge
                                             </span></div>
@@ -83,7 +83,7 @@
                                     <div class="form-row font-weight-bold f-1pt2 mb-4">
                                         <div class="col d-flex justify-content-end align-items-center mr-4"><span class="d-flex">Total</span></div>
                                         <div class="col-2 d-flex justify-content-end align-items-center"><span>$110.99</span></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

@@ -155,9 +155,10 @@ export class CustomizeComponent implements OnInit {
   }
 
   private addToCustomized() {
-    let customizedSelections = Object.assign([], this.customerSelections);    
-    this.customerSelections[0].quantity = this.quantity;    
-    console.log('customizedSelections to orderService', this.customerSelections)
+    this.customerSelections[0].quantity = this.quantity;
+    let customizedSelections = JSON.parse(JSON.stringify(this.customerSelections));
+    // let customizedSelections = Object.assign([], this.customerSelections);            
+    console.log('customizedSelections to orderService', customizedSelections)
     this.orderService.addToCustomized(customizedSelections)  
     this.cancelTemplate();
   }
